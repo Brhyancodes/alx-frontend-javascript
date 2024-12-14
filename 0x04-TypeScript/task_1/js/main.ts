@@ -14,6 +14,43 @@ interface Directors extends Teacher {
 interface printTeacherFunction {
   (firstName: string, lastName: string): string; // Function signature
 }
+// Define the StudentClass interface for the constructor
+interface StudentClassConstructor {
+  new (firstName: string, lastName: string): StudentClass; // Constructor signature
+}
+
+// Define the StudentClass interface
+interface StudentClass {
+  firstName: string;
+  lastName: string;
+  workOnHomework(): string; // Method signature
+  displayName(): string; // Method signature
+}
+
+// Implement the StudentClass
+class Student implements StudentClass {
+  firstName: string;
+  lastName: string;
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+    return 'Currently working';
+  }
+
+  displayName(): string {
+    return this.firstName;
+  }
+}
+
+// Example usage of StudentClass
+const student1 = new Student('Michelle', 'Chepkorir');
+console.log(student1.displayName()); // Output: Michelle
+console.log(student1.workOnHomework()); // Output: Currently working
+
 // Implement the printTeacher function
 const printTeacher: printTeacherFunction = (firstName, lastName) => {
   return `${firstName.charAt(0)}. ${lastName}`;
