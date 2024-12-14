@@ -10,6 +10,15 @@ interface Teacher {
 interface Directors extends Teacher {
   numberOfReports: number; // Required attribute
 }
+// Define the printTeacherFunction interface
+interface printTeacherFunction {
+  (firstName: string, lastName: string): string; // Function signature
+}
+// Implement the printTeacher function
+const printTeacher: printTeacherFunction = (firstName, lastName) => {
+  return `${firstName.charAt(0)}. ${lastName}`;
+};
+
 const director1: Directors = {
   firstName: 'Tracy',
   lastName: 'Cheptoo',
@@ -17,6 +26,9 @@ const director1: Directors = {
   fullTimeEmployee: true,
   numberOfReports: 17,
 };
+// Call printTeacher with director1's name
+console.log(printTeacher(director1.firstName, director1.lastName)); // Output: T. Cheptoo
+
 //log Director to the console
 console.log(director1);
 
